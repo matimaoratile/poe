@@ -1,0 +1,47 @@
+package com.mycompany.mavenproject1;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class LoginTest {
+
+    @Test
+    public void testSuccessfulLogin() {
+        assertTrue(Mavenproject1.loginUser(
+                "user_", 
+                "Password1!", 
+                "user_", 
+                "Password1!"
+        ));
+    }
+
+    @Test
+    public void testLoginWrongUsername() {
+        assertFalse(Mavenproject1.loginUser(
+                "user_", 
+                "Password1!", 
+                "wrong_", 
+                "Password1!"
+        ));
+    }
+
+    @Test
+    public void testLoginWrongPassword() {
+        assertFalse(Mavenproject1.loginUser(
+                "user_", 
+                "Password1!", 
+                "user_", 
+                "WrongPass1!"
+        ));
+    }
+
+    @Test
+    public void testLoginBothWrong() {
+        assertFalse(Mavenproject1.loginUser(
+                "user_", 
+                "Password1!", 
+                "wrong_", 
+                "wrongPass"
+        ));
+    }
+}
