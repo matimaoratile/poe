@@ -1,0 +1,86 @@
+package com.mycompany.mavenproject1;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class Mavenproject1Test {
+
+    // ===== USERNAME TESTS =====
+    @Test
+    public void testValidUsername() {
+        assertTrue(Mavenproject1.checkUsername("ab_cd"));
+    }
+
+    @Test
+    public void testUsernameTooLong() {
+        assertFalse(Mavenproject1.checkUsername("abcdef_"));
+    }
+
+    @Test
+    public void testUsernameNoUnderscore() {
+        assertFalse(Mavenproject1.checkUsername("abcde"));
+    }
+
+    // ===== PASSWORD TESTS =====
+    @Test
+    public void testValidPassword() {
+        assertTrue(Mavenproject1.checkPasswordComplexity("Password1!"));
+    }
+
+    @Test
+    public void testPasswordNoUppercase() {
+        assertFalse(Mavenproject1.checkPasswordComplexity("password1!"));
+    }
+
+    @Test
+    public void testPasswordNoNumber() {
+        assertFalse(Mavenproject1.checkPasswordComplexity("Password!"));
+    }
+
+    @Test
+    public void testPasswordNoSpecialChar() {
+        assertFalse(Mavenproject1.checkPasswordComplexity("Password1"));
+    }
+
+    @Test
+    public void testPasswordTooShort() {
+        assertFalse(Mavenproject1.checkPasswordComplexity("P1!a"));
+    }
+
+    // ===== PHONE NUMBER TESTS =====
+    @Test
+    public void testValidPhoneNumber() {
+        assertTrue(Mavenproject1.checkCellNumber("+27831234567"));
+    }
+
+    @Test
+    public void testInvalidPhoneNumberWrongPrefix() {
+        assertFalse(Mavenproject1.checkCellNumber("0831234567"));
+    }
+
+    @Test
+    public void testInvalidPhoneNumberTooShort() {
+        assertFalse(Mavenproject1.checkCellNumber("+2783123456"));
+    }
+
+    @Test
+    public void testInvalidPhoneNumberLetters() {
+        assertFalse(Mavenproject1.checkCellNumber("+27ABC123456"));
+    }
+
+    // ===== LOGIN TESTS =====
+    @Test
+    public void testSuccessfulLogin() {
+        assertTrue(Mavenproject1.loginUser("user_", "Password1!", "user_", "Password1!"));
+    }
+
+    @Test
+    public void testWrongUsername() {
+        assertFalse(Mavenproject1.loginUser("user_", "Password1!", "wrong_", "Password1!"));
+    }
+
+    @Test
+    public void testWrongPassword() {
+        assertFalse(Mavenproject1.loginUser("user_", "Password1!", "user_", "WrongPass1!"));
+    }
+}
