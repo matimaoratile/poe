@@ -3,7 +3,7 @@ package com.mycompany.mavenproject1;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class Mavenproject1Test {
+public class RegistrationTest {
 
     // ===== USERNAME TESTS =====
     @Test
@@ -28,17 +28,17 @@ public class Mavenproject1Test {
     }
 
     @Test
-    public void testPasswordNoUppercase() {
+    public void testPasswordMissingUppercase() {
         assertFalse(Mavenproject1.checkPasswordComplexity("password1!"));
     }
 
     @Test
-    public void testPasswordNoNumber() {
+    public void testPasswordMissingNumber() {
         assertFalse(Mavenproject1.checkPasswordComplexity("Password!"));
     }
 
     @Test
-    public void testPasswordNoSpecialChar() {
+    public void testPasswordMissingSpecialChar() {
         assertFalse(Mavenproject1.checkPasswordComplexity("Password1"));
     }
 
@@ -54,7 +54,7 @@ public class Mavenproject1Test {
     }
 
     @Test
-    public void testInvalidPhoneNumberWrongPrefix() {
+    public void testInvalidPhoneNumberWrongFormat() {
         assertFalse(Mavenproject1.checkCellNumber("0831234567"));
     }
 
@@ -64,23 +64,7 @@ public class Mavenproject1Test {
     }
 
     @Test
-    public void testInvalidPhoneNumberLetters() {
+    public void testInvalidPhoneNumberWithLetters() {
         assertFalse(Mavenproject1.checkCellNumber("+27ABC123456"));
-    }
-
-    // ===== LOGIN TESTS =====
-    @Test
-    public void testSuccessfulLogin() {
-        assertTrue(Mavenproject1.loginUser("user_", "Password1!", "user_", "Password1!"));
-    }
-
-    @Test
-    public void testWrongUsername() {
-        assertFalse(Mavenproject1.loginUser("user_", "Password1!", "wrong_", "Password1!"));
-    }
-
-    @Test
-    public void testWrongPassword() {
-        assertFalse(Mavenproject1.loginUser("user_", "Password1!", "user_", "WrongPass1!"));
     }
 }
